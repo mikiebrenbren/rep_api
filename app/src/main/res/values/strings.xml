@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">MyRep</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="WHOISMYREP_TXT">Who is my Representative?</string>
@@ -10,4 +9,18 @@
     <string name="title_activity_sens">Sens</string>
     <string name="helloreps">Reps</string>
     <string name="hellosens">Sens</string>
+    <string name="repstitle_txt">Representatives</string>
+    <string name="REPSTITLE_TXT">Representatives</string>
+    <string name="SENSTITLE_TXT">Senators</string>
+    <string name="ziptitle_txt">Search by zip</string>
+    <string name="ok_btn">OK</string>
+    <string name="search_btn">Search</string>
+    <string name="byname_txt">Search by name</string>
+    <string name="bystate_txt">Search by state</string>
+    <string name="statehint_et">Enter two letter state code</string>
+    <string name="namehint_et">Enter representative name</string>
+    <string name="ziphint_et">Enter six digit zip code</string>
+    <string name="title_activity_results">Results</string>
+    <string name="zipmessage_toast">Please make sure zip code is 5 numbers in length</string>
+    <string name="zipstring_log">"zipcode: "</string>
 </resources>
