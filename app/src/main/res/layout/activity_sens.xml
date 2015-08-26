@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/activity_vertical_margin"
+                tools:context="com.myrep.activity.Sens">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/SENSTITLE_TXT"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/SENBYNAME_TXT"
+        android:id="@+id/sensearch_tv"
+        android:layout_marginTop="39dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/name_et_sen"
+        android:layout_below="@+id/sensearch_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:maxLength="16"
+        android:hint="@string/sennamehint_et"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_btn"
+        android:id="@+id/namebutton_senator"
+        android:layout_below="@+id/name_et_sen"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/SENBYSTATE_TXT"
+        android:id="@+id/senatorsearch_tv"
+        android:layout_below="@+id/namebutton_senator"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/state_et_sen"
+        android:layout_below="@+id/senatorsearch_tv"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:maxLength="2"
+        android:hint="@string/statehint_et"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_btn"
+        android:id="@+id/senatorstate_btn"
+        android:layout_below="@+id/state_et_sen"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

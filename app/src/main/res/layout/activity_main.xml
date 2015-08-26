@@ -2,15 +2,42 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                tools:context=".MainActivity">
+                tools:context=".MainActivity"
+                android:id="@+id/activity_main"
+                android:clickable="false"
+
+                android:background="#2196f3">
 
     <TextView
-        android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/WHOISMYREP_TXT"
+        android:id="@+id/main_tv"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="16dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/STATESENT_BTN"
+        android:id="@+id/sen_btn"
+        android:layout_below="@+id/main_tv"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="136dp"
+        android:background="#0D47A1"
+        android:textColor="#ffffff"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/STATEREPS_BTN"
+        android:id="@+id/rep_btn"
+        android:layout_below="@+id/sen_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="44dp"
+        android:background="#0D47A1"
+        android:textColor="#ffffff"/>
 
 </RelativeLayout>
