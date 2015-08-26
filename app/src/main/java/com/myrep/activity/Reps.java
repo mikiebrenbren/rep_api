@@ -1,7 +1,10 @@
 package com.myrep.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.myrep.R;
+import com.myrep.async.GetResponse;
 import com.myrep.utils.Toasts;
 
 public class Reps extends Activity implements View.OnClickListener{
@@ -44,27 +48,35 @@ public class Reps extends Activity implements View.OnClickListener{
     @Override
     public void onClick(View view) {
 
-        Intent intent;
-
-        switch (view.getId()){
-            case R.id.zip_btn_rep:
-                String zipCode = mZipText.getText().toString();
-                Log.i(TAG, getString(R.string.zipstring_log) +  zipCode);
-                if(validateZip(zipCode)){
-                    //make the api call
-                }else{
-                    Toasts.shortToast(this, getString(R.string.zipmessage_toast));
-                }
-                break;
-            case R.id.name_btn_rep:
+        GetResponse response;
+        //check network connection before attempting to make api call
+        if (isConnected()) {
+            switch (view.getId()){
+                case R.id.zip_btn_rep:
+                    String zipCode = mZipText.getText().toString();
+                    Log.i(TAG, getString(R.string.zipstring_log) +  zipCode);
+                    if(validateZip(zipCode)){
+                        //make the api call
+                        response = new GetResponse(this);
+                        response.execute(getString(R.string.REPBYZIP_URL)+zipCode);
+                    }else{
+                        Toasts.shortToast(this, getString(R.string.ZIPMESSAGE_TOAST));
+                    }
+                    break;
+                case R.id.name_btn_rep:
 
 //                Log.i(TAG, )
-                break;
-            case R.id.state_btn_rep:
+                    break;
+                case R.id.state_btn_rep:
 
 //                Log.i(TAG, )
-                break;
+                    break;
+            }
+        } else {
+            Toasts.shortToast(this, getString(R.string.NETERR_TOAST));
         }
+
+
     }
 
     private boolean validateZip(String zip) {
@@ -75,6 +87,17 @@ public class Reps extends Activity implements View.OnClickListener{
             return true;
         }
         return false;
+    }
+
+    private boolean isConnected() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if(networkInfo != null && networkInfo.isConnected()){
+            return true;
+        }else {
+            return false;
+        }
     }
 
 }

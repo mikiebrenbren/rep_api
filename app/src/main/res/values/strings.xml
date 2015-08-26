@@ -21,6 +21,10 @@
     <string name="namehint_et">Enter representative name</string>
     <string name="ziphint_et">Enter six digit zip code</string>
     <string name="title_activity_results">Results</string>
-    <string name="zipmessage_toast">Please make sure zip code is 5 numbers in length</string>
+    <string name="ZIPMESSAGE_TOAST">Please make sure zip code is 5 numbers in length</string>
     <string name="zipstring_log">"zipcode: "</string>
+    <string name="NETERR_TOAST">Please check network connectivity</string>
+    <string name="REPBYZIP_URL"><![CDATA[http://whoismyrepresentative.com/getall_mems.php?output=json&zip=]]></string>
+    <string name="HTTPGET">GET</string>
+    <string name="RESPONSE_LOG">"The response is: "</string>
 </resources>
