@@ -13,8 +13,9 @@ import android.widget.EditText;
 import com.myrep.R;
 import com.myrep.async.GetRepResponse;
 import com.myrep.utils.Toasts;
+import com.myrep.utils.Validate;
 
-public class Reps extends Activity implements View.OnClickListener{
+public class House extends Activity implements View.OnClickListener{
 
     private static final String TAG = Activity.class.getName();
 
@@ -31,12 +32,12 @@ public class Reps extends Activity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reps);
 
-        mZipText = (EditText) findViewById(R.id.zip_et_rep);
-        mNameText = (EditText) findViewById(R.id.name_et_rep);
+        mZipText = (EditText) findViewById(R.id.zip_et_house);
+        mNameText = (EditText) findViewById(R.id.state_et_house);
         mStateText = (EditText) findViewById(R.id.state_et_rep);
 
-        mZipButton = (Button) findViewById(R.id.zip_btn_rep);
-        mNameButton = (Button) findViewById(R.id.name_btn_rep);
+        mZipButton = (Button) findViewById(R.id.zip_btn_sen);
+        mNameButton = (Button) findViewById(R.id.name_btn_sen);
         mStateButton = (Button) findViewById(R.id.state_btn_rep);
 
         mZipButton.setOnClickListener(this);
@@ -50,10 +51,10 @@ public class Reps extends Activity implements View.OnClickListener{
         //check network connection before attempting to make api call
         if (isConnected()) {
             switch (view.getId()){
-                case R.id.zip_btn_rep:
+                case R.id.zip_btn_sen:
                     String zipCode = mZipText.getText().toString();
                     Log.i(TAG, getString(R.string.zipstring_log) + zipCode);
-                    if(validateZip(zipCode)){
+                    if(Validate.validateZip(zipCode)){
                         //make the api call
                         response = new GetRepResponse(this);
                         response.execute(getString(R.string.REPBYZIP_URL)+zipCode);
@@ -62,7 +63,7 @@ public class Reps extends Activity implements View.OnClickListener{
                     }
                     emptyTextField();
                     break;
-                case R.id.name_btn_rep:
+                case R.id.name_btn_sen:
                     String repName = mNameText.getText().toString();
                     Log.i(TAG, getString(R.string.REPNAME_LOG) + repName);
                     response = new GetRepResponse(this);

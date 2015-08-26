@@ -19,7 +19,8 @@
     <string name="bystate_txt">Search by state</string>
     <string name="statehint_et">Enter two letter state code</string>
     <string name="namehint_et">Enter representative name</string>
-    <string name="ziphint_et">Enter six digit zip code</string>
+    <string name="sennamehint_et">Enter Senator name</string>
+    <string name="ziphint_et">Enter five digit zip code</string>
     <string name="title_activity_results">Results</string>
     <string name="ZIPMESSAGE_TOAST">Please enter a 5 digit zip code</string>
     <string name="zipstring_log">"zipcode: "</string>
@@ -34,4 +35,9 @@
     <string name="JSONERR_LOG">error parsing json</string>
     <string name="DATAERR_TOAST">No Data Found</string>
     <string name="RESULT_STR">results</string>
+    <string name="RESULT_TV">Your Results</string>
+    <string name="SENBYNAME_TXT">Search by name</string>
+    <string name="SENBYSTATE_TXT">Search by state</string>
+    <string name="SENNAME_URL"><![CDATA[http://whoismyrepresentative.com/getall_sens_byname.php?output=json&name=]]></string>
+    <string name="SENSTATE_URL"><![CDATA[http://whoismyrepresentative.com/getall_sens_bystate.php?output=json&state=]]></string>
 </resources>

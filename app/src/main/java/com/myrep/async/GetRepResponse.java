@@ -3,13 +3,8 @@ package com.myrep.async;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
-import android.view.View;
 
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonParser;
@@ -18,19 +13,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.myrep.R;
 import com.myrep.activity.Results;
 import com.myrep.model.Representative;
-import com.myrep.model.Representatives;
 import com.myrep.utils.Toasts;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Arrays;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -66,19 +59,22 @@ public class GetRepResponse extends AsyncTask<String, Void, String> {
         //if this is not
         JsonFactory jsonFactory = new JsonFactory();
         ObjectMapper objectMapper = new ObjectMapper();
-        Representatives representatives = null;
+        HashMap<String, ArrayList<Representative>> repMap = null;
         try {
             JsonParser jsonParser = jsonFactory.createParser(result);
-//            representatives = objectMapper.readValue(jsonParser, Representatives.class);
-            List<Representative> representativeList = objectMapper.readValue(result,  new TypeReference<List<Representative>>() {});
+            repMap = objectMapper.readValue(jsonParser, new TypeReference<Map<String, ArrayList<Representative>>>(){});
         } catch (IOException e) {
             e.printStackTrace();
             Log.i(TAG, mContext.getString(R.string.JSONERR_LOG));
             Toasts.shortToast(mContext, mContext.getString(R.string.DATAERR_TOAST));
         }
 
-        Log.i(TAG, representatives.get(mContext.getString(R.string.RESULT_STR)).get(0).getName());
-        Toasts.shortToast(mContext, result);
+        if(repMap!= null){
+            Log.i(TAG, repMap.get(mContext.getString(R.string.RESULT_STR)).get(0).getName());
+            Intent intent = new Intent(mContext, Results.class);
+            intent.putExtra("map", repMap);
+            mContext.startActivity(intent);
+        }
     }
 
     // Given a URL, establishes an HttpUrlConnection and retrieves

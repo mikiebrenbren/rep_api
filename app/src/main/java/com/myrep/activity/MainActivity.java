@@ -2,10 +2,7 @@ package com.myrep.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -40,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.rep_btn:
-                intent = new Intent(this, Reps.class);
+                intent = new Intent(this, House.class);
                 startActivity(intent);
                 break;
         }
