@@ -2,7 +2,6 @@ package com.myrep.activity;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -12,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.myrep.R;
-import com.myrep.async.GetResponse;
+import com.myrep.async.GetRepResponse;
 import com.myrep.utils.Toasts;
 
 public class Reps extends Activity implements View.OnClickListener{
@@ -47,29 +46,35 @@ public class Reps extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View view) {
-
-        GetResponse response;
+        GetRepResponse response;
         //check network connection before attempting to make api call
         if (isConnected()) {
             switch (view.getId()){
                 case R.id.zip_btn_rep:
                     String zipCode = mZipText.getText().toString();
-                    Log.i(TAG, getString(R.string.zipstring_log) +  zipCode);
+                    Log.i(TAG, getString(R.string.zipstring_log) + zipCode);
                     if(validateZip(zipCode)){
                         //make the api call
-                        response = new GetResponse(this);
+                        response = new GetRepResponse(this);
                         response.execute(getString(R.string.REPBYZIP_URL)+zipCode);
                     }else{
                         Toasts.shortToast(this, getString(R.string.ZIPMESSAGE_TOAST));
                     }
+                    emptyTextField();
                     break;
                 case R.id.name_btn_rep:
-
-//                Log.i(TAG, )
+                    String repName = mNameText.getText().toString();
+                    Log.i(TAG, getString(R.string.REPNAME_LOG) + repName);
+                    response = new GetRepResponse(this);
+                    response.execute(getString(R.string.REPBYNAME_URL) + repName);
+                    emptyTextField();
                     break;
                 case R.id.state_btn_rep:
-
-//                Log.i(TAG, )
+                    String repState = mStateText.getText().toString();
+                    Log.i(TAG, getString(R.string.REPSTATE_LOG) + repState);
+                    response = new GetRepResponse(this);
+                    response.execute((getString(R.string.REPBYSTATE_URL)+repState));
+                    emptyTextField();
                     break;
             }
         } else {
@@ -98,6 +103,12 @@ public class Reps extends Activity implements View.OnClickListener{
         }else {
             return false;
         }
+    }
+
+    private void emptyTextField(){
+        mNameText.setText("");
+        mStateText.setText("");
+        mZipText.setText("");
     }
 
 }
